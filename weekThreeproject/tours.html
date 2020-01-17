@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!--
+
+Original Author:Derek Dombek
+Date Created:08-22-19
+Version:tours html layout
+Date Last Modified:09-06-19
+Modified by:Derek Dombek
+Modification log:adjusted some of the colspans on the mobile layout. added social media icons.
+ 
+-->
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Enjoy the best fishing with the Best Fishing Guide in the country!">
+<meta name="keywords" content="Fishing Guide, Fishing Tours, Marlin, Snook, Hog Fish, Mahi Mahi, Jack, Tarpon, King Fish, Stuart, Jensen Beach, South Florida">
+<meta name="author" content="Derek Dombek">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tours</title>
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/hamburger.css">
+<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="css/menuAnimate.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="images/site.webmanifest">
+
+</head>
+
+<body> 
+      
+    <header class="topbar"> 
+     <!--social media layout-->
+            <div class="mediaContainer">
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                    
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                </div>
+        <a href="weekOneProject.html"><img src="images/bobfishinglogo.png" class="mainlogo" alt="icon logo"></a>
+<!-- below I created a div to keep the hamburger on the same bar as the desktop nav bar-->
+        <div class="blue-bar">
+            <nav class="hamburger-horizontal">   
+            <a id="hamburger" href="#" ><img src="images/navicon.png" alt="menu image"></a>
+                <ul class="sub-menu">
+                    <li><a href="weekOneProject.html">Home</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="about.html">About Bob</a></li>
+                    <li><a href="contact.html">Contact</a></li>                 
+                </ul>
+            </nav>
+            <nav class="main-menu" id="animateMenu">  
+                <ul >
+                    <li><a href="weekOneProject.html">Home</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About Bob</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                </ul>
+            </nav>  
+        </div>
+        
+    </header>
+    <article>
+        <header>
+                <h1>Tour Schedule</h1><br/>
+        </header>
+    </article>
+    
+    <section>
+        
+        <table class="tourSchedule">
+            <caption>Eastern Standard Time</caption>
+            <colgroup>
+                <col id="firstCol" />
+                <col class="dayCols" span="7" />
+            </colgroup>
+            <thead>
+                <tr>
+                    <th id="time">Time</th>
+                    <th >0700</th>
+                    <th >0800</th>
+                    <th >0900</th>
+                    <th >1000</th>
+                    <th >1100</th>
+                    <th >1200</th>
+                    <th >Til sundown</th>                  
+                </tr>
+            </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="8">All tours and times are subject to change.</td>
+                    </tr>
+                </tfoot>
+            <tbody>
+                <tr>
+                    <th>Monday</th>
+                    <td colspan="7">Deep Sea</td>
+                </tr>
+                <tr>
+                    <th>Tuesday</th>
+                    <td colspan="6">Deep Sea</td>
+                    <td >Intercoastal Fishing</td>
+                </tr>
+                <tr>
+                    <th>Wednesday</th>
+                    <td rowspan="2" colspan="3">Spear Fishing</td>
+                    <td rowspan="2" colspan="4">Intercoastal Fishing</td>
+                </tr>
+                <tr>
+                    <th>Thursday</th>   
+                </tr>
+                <tr>
+                    <th>Friday</th>
+                    <td colspan="5">Deep Sea</td>
+                    <td colspan="2">Intercoastal Fishing</td>
+                </tr>
+            </tbody>
+        </table>
+<!--made seperate html code for the mobile table-->
+        <table class="mobileTourSchedule">
+            <caption>Eastern Standard Time</caption>
+            <colgroup>
+                <col id="mobileFirstCol" />
+                <col class="dayCols" span="7" />
+            </colgroup>
+            <!--took out thead-->
+                <tfoot>
+                    <tr>
+                        <td colspan="8">All tours and times are subject to change.</td>
+                    </tr>
+                </tfoot>
+            <tbody>
+                <!--made the calspans smaller-->
+                <tr>
+                    <th>Mon</th>
+                    <td colspan="6">Deep Sea<br/>(all day)</td>
+                </tr>
+                <tr>
+                    <th>Tue</th>
+                    <td colspan="2">Deep Sea<br/>(0700-1300)</td>
+                    <td >Intercoastal Fishing<br/>(1300-sundown)</td>
+                </tr>
+                <tr>
+                    <th>Wed</th>
+                    <td rowspan="2" colspan="2">Spear Fishin<br/>(0700-1000)<br/></td>
+                    <td rowspan="2" >Intercoastal Fishing<br/>(1000-sundown)</td>
+                </tr>
+                <tr>
+                    <th>Thur</th>   
+                </tr>
+                <tr>
+                    <th>Fri</th>
+                    <td colspan="2">Deep Sea<br/>(0700-1200)</td>
+                    <td >Intercoastal Fishing<br/>(1200-sundown)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section>
+        <h1>Past Fishing Tours</h1>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/nxWOfTte2nk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </section>
+    
+    <footer>
+        <p>
+            <a href="tel:17723331777">(772) 333-1777</a><br/>
+            <a href="mailto:Bobsfishing9@gmail.com">Bobsfishing@gmail.com</a><br/><br/>
+            <span style="color:rgb(226, 134, 59);">2019</span> &copy; <a href="index.html" class="copyright">Bob's Fishing Tours</a>. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>

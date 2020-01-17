@@ -1,0 +1,262 @@
+@charset "utf-8";
+/*
+
+Original Author: Derek Dombek
+Date Created:08-22-19
+Version:main styles
+Date Last Modified:09-06-19
+Modified by:Derek Dombek
+Modification log: added a photo to the html background, added a colored background for the footer/changed text color in the footer
+
+ 
+*/
+
+
+
+/* added a background image to the html */
+html {
+    background: center url(../images/IMG_1705.JPG);
+    background-attachment: fixed;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    background-color: rgb(234, 234, 255);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    width: 1100px;
+ }
+ /* social media styles */
+ div.mediaContainer {
+     margin-left: auto;
+     margin-right: auto;
+     width: 20%;
+ }
+
+ .fa {
+     
+     background:none;
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+  }
+ header.topbar {
+    height: 155px;
+    margin-bottom: 80px;
+    background: linear-gradient(300deg, rgb(134, 134, 221), transparent);
+ }
+/* Main/desktop navigation */
+
+ nav.main-menu {
+    padding-bottom: 36px;
+}
+
+nav.main-menu ul{
+    background-color: #0b2752;
+    color: white;	
+	display: block;
+	float: left;
+	text-align: center;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+nav.main-menu ul li {
+    display: inline;
+    margin: 7%;
+}
+
+nav.main-menu ul li a {
+    color: white;
+}
+
+/* body and image and h1 styles */
+
+ body article header h1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3%;
+    width: 50%;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: rgb(12, 7, 66) 3px 1px 10px;
+}
+body section h1 {
+    display: block;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: rgb(12, 7, 66) 3px 1px 10px;
+}
+
+
+figure {
+   
+    
+    margin: 30px auto 30px;
+    width: 70%;
+}
+ figure img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    
+   border:  rgb(12, 7, 66);
+   border-radius: 80px;
+ }
+
+ img.mainlogo {
+    padding-left: 50px;
+    display: block;
+ }
+ #TourTitle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding-top: 10px;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: rgb(12, 7, 66) 3px 1px 10px;
+ }
+
+/* styles for the flex/tour package boxes */
+
+ section#packages {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin: 30px 30px 30px 30px;
+ }
+ section#packages article {
+     background-color: white;
+    -webkit-flex: 5 5 250px;
+    flex: 5 5 250px;
+    border: 1px transparent rgb(210, 228, 255) transparent;
+     border-radius: 20px 20px 20px 20px;
+     box-shadow: rgb(134, 134, 221) 2px 2px 8px;
+     margin: 20px 10px 20px 10px;
+     padding:15px 15px 15px 15px;
+     color: rgb(12, 7, 66);
+ }
+
+ section#packages article h1 {
+    margin: 10px auto 10px auto;
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+ }
+footer {
+    background-color: #0b2752;
+    text-align: center;
+    padding-top: 30px;
+}
+ footer a {
+     text-decoration: none;
+     color: rgb(210, 228, 255);
+ }
+ footer p {
+     color: white;
+ }
+/* ===============================
+   Mobile: 0px to 480px
+   ===============================
+*/
+
+@media only screen and (max-width: 480px) {
+    body {
+        width: 100%;
+    }
+    img.mainlogo {
+        padding-left: 0;
+    }
+/* sizes for mobile image */
+
+
+    figure img{
+            margin: 30px auto 30px;
+            width: 80%;
+        }
+/* to disable desktop nav */
+    
+    .main-menu ul {
+        display: none!important;
+    }
+    
+/* hamburger nav styles */
+
+   nav.hamburger-horizontal {
+        background-color: #0b2752;
+        
+        display: block;
+        float: left;
+        
+        width: 100%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    a#hamburger {
+        width: 9%;
+    }
+    
+/* styles for the hamburger nav's sub menu */
+
+    ul.sub-menu {
+        background-color: rgb(185, 19, 42);
+        color: black;
+        position: absolute;
+        width: 30%;
+        border-radius: 20%;
+        text-align: center;
+     }
+     ul.sub-menu li {
+         padding: 5px;
+     }
+
+/* adjust package boxes into a column, instead of a row */
+
+     section#packages {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex-flow: column;
+        flex-flow: column;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 30px auto 30px auto;
+        width: 70%;
+     }
+     section#packages article {
+        -webkit-flex: 5 5 100px;
+        flex: 5 5 100px;
+     }
+     
+ }
+/* ===============================
+   Tablet and Desktop: 481px and greater
+   ===============================
+*/
+@media all and (min-width: 481px) {
+
+/* disable hamburger menu while in tablet or desktop modes */
+
+    nav.hamburger-horizontal {
+        display: none;
+     }
+    
+ }
+ @media all and (min-width: 769px) and (max-width: 1280px) {
+    nav.hamburger-horizontal {
+        display: none;
+     }
+}

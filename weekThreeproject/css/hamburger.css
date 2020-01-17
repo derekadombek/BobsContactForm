@@ -1,0 +1,30 @@
+/*
+
+Original Author: Derek Dombek
+Date Created:08-22-19
+Version:hamburger styles
+Date Last Modified:08-30-19
+Modified by:Derek Dombek
+Modification log: N/A
+
+ 
+*/
+
+a#hamburger {
+    display: none;
+ }
+ 
+
+@media only screen and (max-width: 480px) {
+   a#hamburger {
+      display: block;
+      margin-left: 30px;
+   }
+   nav.hamburger-horizontal ul {
+      display: none;
+      margin-left: 30px;
+   }
+   a#hamburger:hover+ul, nav.hamburger-horizontal ul:hover {
+      display: block;
+   }
+}

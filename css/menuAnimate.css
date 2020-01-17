@@ -1,0 +1,57 @@
+/*
+
+Original Author: Derek Dombek
+Date Created:08-22-19
+Version:menu animation styles
+Date Last Modified:08-30-19
+Modified by:Derek Dombek
+Modification log: N/A
+
+ 
+*/
+
+nav#animateMenu a {
+    font-size: 1em;
+    letter-spacing: 0em;
+    transition: letter-spacing 2s ease,
+                text-shadow 2s cubic-bezier(0.2,0,0.5,0.2);
+}
+
+nav#animateMenu a:hover {
+    font-size: 1.1em;
+    color: rgb(156, 156, 216);
+    letter-spacing: .5em;
+    transition: color 1s ease 0.5s,
+               font-size .05s ease,
+               letter-spacing 2s ease,
+               text-shadow 2s cubic-bezier(1,0,0.5,0.5);
+}
+input#submitButton {
+    font-size: .80em;
+    letter-spacing: 0em;
+    transition: letter-spacing 2s ease,
+                text-shadow 2s cubic-bezier(0.2,0,0.5,0.2);
+}
+
+input#submitButton:hover {
+    font-size: 1em;
+    transition: color 1s ease 1s,
+               font-size 1s ease,
+               letter-spacing 2s ease,
+               text-shadow 2s cubic-bezier(1,0,0.5,0.5);
+}
+
+input#resetButton {
+    font-size: .80em;
+    letter-spacing: 0em;
+    transition: letter-spacing 2s ease,
+                text-shadow 2s cubic-bezier(0.2,0,0.5,0.2);
+}
+
+input#resetButton:hover {
+    font-size: 1em;
+    transition: color 1s ease 1s,
+               font-size 1s ease,
+               letter-spacing 2s ease,
+               text-shadow 2s cubic-bezier(1,0,0.5,0.5);
+}

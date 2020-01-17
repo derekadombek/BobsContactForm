@@ -1,0 +1,19 @@
+/*
+
+Original Author: Derek Dombek
+Date Created:08-22-19
+Version:about styles
+Date Last Modified:09-06-19
+Modified by:Derek Dombek
+Modification log: added a margin bottom
+
+ 
+*/
+/* about bob's bio */
+article p {
+    margin-top: 2%;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}

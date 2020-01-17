@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+/*
+
+Original Author: Derek Dombek
+Date Created:08-22-19
+Version:contact styles
+Date Last Modified:08-30-19
+Modified by:Derek Dombek
+Modification log: N/A
+
+ 
+*/
+
+/* form and fieldset styles */
+form#contact > fieldset {
+    border: transparent;
+    font-size: 1em;
+    margin-left: 33%;
+    margin-right: 12%;
+}
+/* label styles */
+
+/* select, input and textarea styles */
+select#packs {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-right: 10px;
+    margin-left: 18%;
+}
+
+input#name {
+    margin-bottom: 10px;
+    margin-left: 15%;
+}
+
+input#mail {
+    margin-bottom: 10px;
+    margin-left: 15%;
+}
+
+input#phone {
+    margin-left: 15%;
+}
+
+textarea#commBox {
+    margin-top: 10px;
+    height: 100px;
+    width: 60%;
+    margin-left: .5%;
+}
+/* button styles */
+input[type='submit'], input[type='reset'] {
+    font-size: .80em;
+    padding: 2px;
+    margin: 8px;
+    margin-left: 12%;
+}
+/* validation styles */
+input#mail:focus:valid,
+input#phone:focus:valid {
+   background: white url(../images/checkMark.png) bottom right/contain no-repeat;
+}
+
+input#mail:focus:invalid,
+input#phone:focus:invalid {
+   background: white url(../images/x.png) bottom right/contain no-repeat;
+}
+
+/* ===============================
+   Mobile: 0px to 480px
+   ===============================
+*/
+
+@media only screen and (max-width: 480px) {
+    /* form and fieldset styles */
+    form#contact > fieldset {
+        border: transparent;
+        font-size: 1em;
+        margin-left: 5%;
+        margin-right: 12%;
+    }
+    /* select, input and textarea styles */
+    select#packs {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding-right: 10px;
+        margin-left: 29%;
+    }
+    
+    input#name {
+        margin-bottom: 10px;
+        margin-left: 21%;
+    }
+    
+    input#mail {
+        margin-bottom: 10px;
+        margin-left: 21%;
+    }
+    
+    input#phone {
+        margin-left: 21%;
+    }
+ 
+    
+    textarea#commBox {
+      margin-left: 20%;
+    }
+    /* button styles */
+    div#submitResetButtons {
+        margin-left: 9%;
+    }
+    /* validation styles */
+    input#mail:focus:valid,
+    input#phone:focus:valid {
+       background: white url(../images/checkMark.png) bottom right/contain no-repeat;
+    }
+    
+    input#mail:focus:invalid,
+    input#phone:focus:invalid {
+       background: white url(../images/x.png) bottom right/contain no-repeat;
+    }
+}

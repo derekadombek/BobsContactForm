@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--
+
+Original Author:Derek Dombek
+Date Created:08-22-19
+Version:contact layout
+Date Last Modified:09-06-19
+Modified by:Derek Dombek
+Modification log:added social media icons, made a new contact form with bootstrap.
+ 
+-->
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Enjoy the best fishing with the Best Fishing Guide in the country!">
+<meta name="keywords" content="Fishing Guide, Fishing Tours, Marlin, Snook, Hog Fish, Mahi Mahi, Jack, Tarpon, King Fish, Stuart, Jensen Beach, South Florida">
+<meta name="author" content="Derek Dombek">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact</title>
+<!--===============================================================================================-->
+
+<!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+
+
+
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/hamburger.css">
+<link rel="stylesheet" href="css/contact.css">
+<link rel="stylesheet" href="css/menuAnimate.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="images/site.webmanifest">
+
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="js/formsubmit.js"></script>
+
+</head>
+
+<body>
+        
+    <header class="topbar"> 
+       <!--social media layout-->
+            <div class="mediaContainer">
+                    
+                    
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                </div>
+        <a href="weekOneProject.html"><img src="images/bobfishinglogo.png" class="mainlogo" alt="icon logo"></a>
+<!-- below I created a div to keep the hamburger on the same bar as the desktop nav bar-->
+        <div class="blue-bar">
+            <nav class="hamburger-horizontal">   
+            <a id="hamburger" href="#" ><img src="images/navicon.png" alt="menu image"></a>
+                <ul class="sub-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="about.html">About Bob</a></li>
+                    <li><a href="contact.html">Contact</a></li>                 
+                </ul>
+            </nav>
+            <nav class="main-menu" id="animateMenu">  
+                <ul >
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">About Bob</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                </ul>
+            </nav>  
+        </div>
+    </header>
+
+    <article>
+            <header>
+                    <h1>Contact Bob for a tour!</h1><br/>
+            </header>
+        </article>
+
+        <!-- new form made with bootstrap-->
+    <section id="form">
+        
+        <form class="contact100-form validate-form">
+                <div class="form-column">
+                        
+                  <div class="col-md-5 mb-3">
+                        
+                    
+                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                    <input id="name" class="input100" type="text" name="name" placeholder="Enter your name">
+                </div>
+                    </div>
+                
+                    <div class="col-md-5 mb-3">
+                            
+                                <div class="input-group">
+                                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                                        <input id="mail" class="input100" type="text" name="email" placeholder="Enter your email" required pattern="^\w([a-zA-z0-10.!_`'~-]{0,60})@\w([a-zA-z0-10]{0,60}).([a-zA-z]{0,3})$">
+                                        </div>
+                                    <div class="invalid-feedback">
+                                      Invalid Email Address.
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-5 mb-3">
+                                    
+                                    <select id="tours" class="selection-2" name="service" required>
+                                        <option id="choose">Packages</option>
+                                        <option>Deep Sea fishing</option>
+                                        <option>Intercoastal fishing</option>
+                                        <option>Spear fishing</option>
+                                    </select>
+                            
+                                </div>
+                                <div class="col-md-5 mb-4">
+                                        
+                                        <textarea type="text" class="form-control"  placeholder="Drop a line!"  required></textarea>
+                                        </div>
+                  
+                </div>
+                
+                
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" type="reset">Reset</button>
+              </form>
+              
+              <script>
+                  
+              // JavaScript for disabling form submissions if there are invalid fields
+              (function() {
+                'use strict';
+                window.addEventListener('load', function() {
+                  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                  var forms = document.getElementsByClassName('needs-validation');
+                  // Loop over them and prevent submission
+                  var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                      if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                      }
+                      form.classList.add('was-validated');
+                    }, false);
+                  });
+                }, false);
+              })();
+
+              
+              </script>
+              
+    </section>    
+    <div id="dropDownSelect1"></div>
+    <script src="js/formsubmit.js"></script>
+    <!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+        <script>
+            $(".selection-2").select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $('#dropDownSelect1')
+            });
+        </script>
+        <script>
+            
+        </script>
+    <!--===============================================================================================-->
+        <script src="vendor/daterangepicker/moment.min.js"></script>
+        <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+        <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-23581568-13');
+    </script>
+   
+
+
+
+    <footer>
+        <p>
+            <a href="tel:17723331777">(772) 333-1777</a><br/>
+            <a href="mailto:Bobsfishing9@gmail.com">Bobsfishing@gmail.com</a><br/><br/>
+            <span style="color:rgb(226, 134, 59);">2019</span> &copy; <a href="index.html" class="copyright">Bob's Fishing Tours</a>. All Rights Reserved.
+        </p>
+    </footer>
+
+</body>
+</html>

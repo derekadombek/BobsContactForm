@@ -1,0 +1,146 @@
+@charset "utf-8";
+/*
+
+Original Author: Derek Dombek
+Date Created:08-22-19
+Version: table styles
+Date Last Modified:09-06-19
+Modified by:Derek Dombek
+Modification log: added video styling and h1 styling
+
+ 
+*/
+
+table.mobileTourSchedule {
+   display: none;
+}
+table.tourSchedule {
+   background: white;
+   border: 10px outset black;
+   border-collapse: collapse;
+   font-size: 0.75em;
+   margin-bottom: 8%;
+   margin-left: auto;
+   margin-right: auto;
+   width: 80%;
+   
+}
+
+
+/* th and td styles */
+table.tourSchedule th, table.tourSchedule td {
+    
+   border: 1px solid gray;
+   padding: 5px;
+   vertical-align: top;
+   text-align: center;
+   
+}
+table.tourSchedule th#time {
+   background-color: rgba(146, 145, 145, 0.671);
+}
+
+
+/* caption styles */
+table.tourSchedule caption {
+   caption-side: top;
+   text-align: left; 
+}
+tbody tr th {
+    background-color: #8eacd8;
+}
+
+/* row styles */
+
+table.tourSchedule thead {
+   background: #0b2752;
+   color: white; 
+}
+
+table.tourSchedule thead tr {
+   height: 30px;
+}
+table.tourSchedule tbody tr {
+   height: 40px;
+}
+/* column styles */
+col#firstCol {
+   
+   width: 16%;
+}
+col.dayCols {
+  
+   width: 12%;
+}
+/* video styles */
+section iframe {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 5%;
+   width: 50%;
+}
+/* footer styles */
+tfoot {
+   background-color: rgb(185, 19, 42);
+   color: white;
+   text-align: center;
+}
+/* ===============================
+   Mobile: 0px to 480px
+   ===============================
+*/
+
+@media all and (max-width: 480px) {
+   table.tourSchedule {
+      display: none;
+
+   }
+    /* table styles */
+   table.mobileTourSchedule {
+      display: block;
+      background: white;
+      border: 10px outset black;
+      border-collapse: collapse;
+      font-size: 0.75em;
+      margin-bottom: 8%;
+      margin-left: auto;
+      margin-right: auto;
+      width: 55%;
+      
+   }
+   
+   
+   /* th and td styles */
+   table.mobileTourSchedule th, table.mobileTourSchedule td {
+       
+      border: 1px solid gray;
+      padding: 5px;
+      vertical-align: top;
+      text-align: center;
+      
+   }
+   table.mobileTourSchedule th#mobileTime {
+      background-color: rgba(146, 145, 145, 0.671);
+   }
+   
+   
+   
+   /* caption styles */
+   table.mobileTourSchedule caption {
+      caption-side: top;
+      text-align: left; 
+   }
+   tbody tr th {
+       background-color: #8eacd8;
+   }
+   
+  
+
+   /* footer styles */
+   tfoot {
+      background-color: rgb(185, 19, 42);
+      color: white;
+      text-align: center;
+   }
+}
