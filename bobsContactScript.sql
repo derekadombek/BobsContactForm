@@ -37,7 +37,7 @@ VALUES
 	('Erik', 'Diehle'),
 	('Darren', 'Caskey'),
 	('Derek', 'Dombek'),
-	('bob', 'Dombek'),
+	('bob', 'McGhee'),
 	('Pamela', 'Dombek'),
 	('Fred', 'Dombek'),
 	('Bob', 'Miller'),
