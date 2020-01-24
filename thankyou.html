@@ -4,9 +4,9 @@
 Original Author:Derek Dombek
 Date Created:08-22-19
 Version:contact layout
-Date Last Modified:01-24-20
+Date Last Modified:09-06-19
 Modified by:Derek Dombek
-Modification log:adjusted things for the database.
+Modification log:added social media icons, made a new contact form with bootstrap.
  
 -->
 <html lang="en-US">
@@ -39,7 +39,7 @@ Modification log:adjusted things for the database.
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<script src="js/formsubmit.js"></script>-->
+<script src="js/formsubmit.js"></script>
 
 </head>
 
@@ -78,60 +78,11 @@ Modification log:adjusted things for the database.
 
     <article>
             <header>
-                    <h1>Contact Bob for a tour!</h1><br/>
+                    <h1>Thank You!</h1><br/>
             </header>
         </article>
 
-        <!-- new form made with bootstrap-->
-    <section id="form">
-        
-        <form action="thankyou.php" class="contact100-form validate-form" method="post">
-            <div class="form-column">
-                        
-                <div class="col-md-5 mb-3">
- 
-                    <div class="wrap-input100 validate-input" data-validate="Name is required">
-                        <input id="name" class="input100" type="text" name="name" placeholder="Enter your name" required>
-                    </div>
-                </div>
-                
-                    <div class="col-md-5 mb-3">
-                            
-                        <div class="input-group">
-                            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                <input id="mail" class="input100" type="text" name="email" placeholder="Enter your email" required pattern="^\w([a-zA-z0-10.!_`'~-]{0,60})@\w([a-zA-z0-10]{0,60}).([a-zA-z]{0,3})$">
-                            </div>
-                            
-                            <div class="invalid-feedback">
-                                Invalid Email Address.
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <div class="col-md-5 mb-3">
-                                    
-                                    
-                        <select id="tours" name="services" size="3" required>
-                            <option value="1" selected>Deep Sea fishing</option>
-                            <option value="2">Intercoastal fishing</option>
-                            <option value="3">Spear fishing</option>
-                        </select>
-                    </div>
-                    <div class="col-md-5 mb-4">
-                        <textarea name="message" class="form-control" placeholder="Drop a line!" id="message" cols="45" rows="5" required></textarea>            
-                    </div>
-                  
-            </div>
-
-                <button class="btn btn-primary" type="submit">Submit</button>
-                <button class="btn btn-primary" type="reset">Reset</button>
-        </form>
-              
-              
-              
-    </section>    
-    <div id="dropDownSelect1"></div>
-    
+       
 
 
 

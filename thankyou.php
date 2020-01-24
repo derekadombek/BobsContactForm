@@ -1,12 +1,71 @@
+
+<!--
+
+Original Author:Derek Dombek
+Date Created:01-24-20
+Version:initial database
+Date Last Modified:01-24-20
+Modified by:Derek Dombek
+Modification log:connected database to bobs contact form
+ 
+-->
+<?php
+    
+    $customer_name = filter_input(INPUT_POST, 'name');
+    $customer_email = filter_input(INPUT_POST, 'email');
+
+    $customer_packages = filter_input(INPUT_POST, 'services');
+
+    $customer_msg = filter_input(INPUT_POST, 'message');
+    // Validate inputs
+    if ($customer_name == null || $customer_email == null ||
+        $customer_msg == null) {
+        $error = "Invalid input data. Check all fields and try again.";
+        /* include('error.php'); */
+        echo "Form Data Error: " . $error; 
+        exit();
+        } else {
+            $dsn = 'mysql:host=localhost;dbname=bobscontact';
+            $username = 'root';
+            $password = 'Pa$$w0rd';
+
+            try {
+                $db = new PDO($dsn, $username, $password);
+
+            } catch (PDOException $e) {
+                $error_message = $e->getMessage();
+                /* include('database_error.php'); */
+                echo "DB Error: " . $error_message; 
+                exit();
+            }
+
+            // Add the product to the database  
+            $query = 'INSERT INTO customer
+                         (customerName, customerEmail, customerDropDown, customerMsg, employeeID)
+                      VALUES
+                         (:customer_name, :customer_email, :customer_packages, :customer_msg, 1)';
+            $statement = $db->prepare($query);
+            $statement->bindValue(':customer_name', $customer_name);
+            $statement->bindValue(':customer_email', $customer_email);
+            $statement->bindValue(':customer_packages', $customer_packages);
+            $statement->bindValue(':customer_msg', $customer_msg);
+            $statement->execute();
+            $statement->closeCursor();
+            /* echo "Fields: " . $visitor_name . $visitor_email . $visitor_msg; */
+
+}
+
+?>
+
 <!DOCTYPE html>
 <!--
 
 Original Author:Derek Dombek
 Date Created:08-22-19
 Version:contact layout
-Date Last Modified:01-24-20
+Date Last Modified:09-06-19
 Modified by:Derek Dombek
-Modification log:adjusted things for the database.
+Modification log:added social media icons, made a new contact form with bootstrap.
  
 -->
 <html lang="en-US">
@@ -39,7 +98,7 @@ Modification log:adjusted things for the database.
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!--<script src="js/formsubmit.js"></script>-->
+<script src="js/formsubmit.js"></script>
 
 </head>
 
@@ -78,60 +137,11 @@ Modification log:adjusted things for the database.
 
     <article>
             <header>
-                    <h1>Contact Bob for a tour!</h1><br/>
+                    <h2>Thank you, <?php echo $customer_name; ?>, for contacting us!</h2>
             </header>
         </article>
 
-        <!-- new form made with bootstrap-->
-    <section id="form">
-        
-        <form action="thankyou.php" class="contact100-form validate-form" method="post">
-            <div class="form-column">
-                        
-                <div class="col-md-5 mb-3">
- 
-                    <div class="wrap-input100 validate-input" data-validate="Name is required">
-                        <input id="name" class="input100" type="text" name="name" placeholder="Enter your name" required>
-                    </div>
-                </div>
-                
-                    <div class="col-md-5 mb-3">
-                            
-                        <div class="input-group">
-                            <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                <input id="mail" class="input100" type="text" name="email" placeholder="Enter your email" required pattern="^\w([a-zA-z0-10.!_`'~-]{0,60})@\w([a-zA-z0-10]{0,60}).([a-zA-z]{0,3})$">
-                            </div>
-                            
-                            <div class="invalid-feedback">
-                                Invalid Email Address.
-                            </div>
-                        </div>
-                    </div>
-                        
-                    <div class="col-md-5 mb-3">
-                                    
-                                    
-                        <select id="tours" name="services" size="3" required>
-                            <option value="1" selected>Deep Sea fishing</option>
-                            <option value="2">Intercoastal fishing</option>
-                            <option value="3">Spear fishing</option>
-                        </select>
-                    </div>
-                    <div class="col-md-5 mb-4">
-                        <textarea name="message" class="form-control" placeholder="Drop a line!" id="message" cols="45" rows="5" required></textarea>            
-                    </div>
-                  
-            </div>
-
-                <button class="btn btn-primary" type="submit">Submit</button>
-                <button class="btn btn-primary" type="reset">Reset</button>
-        </form>
-              
-              
-              
-    </section>    
-    <div id="dropDownSelect1"></div>
-    
+       
 
 
 
