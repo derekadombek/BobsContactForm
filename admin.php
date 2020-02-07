@@ -4,13 +4,15 @@
 Original Author:Derek Dombek
 Date Created:01-31-20
 Version:initial admin page
-Date Last Modified:01-31-20
+Date Last Modified:02-07-20
 Modified by:Derek Dombek
-Modification log:made it to where an employee can select and delete a customer
- 
+Modification log: -01-31-20-made it to where an employee can select and delete a customer
+                  -02-07-20-added require() to connect to database.
 -->
 <?php
-    
+    include_once('./model/database.php');
+    require('./model/employee.php');
+    require('./model/customer.php');
 if (!isset($employee_id)) {
     $employee_id = filter_input(INPUT_GET, 'employee_id', 
             FILTER_VALIDATE_INT);
@@ -22,13 +24,13 @@ if (!isset($employee_id)) {
     
     // Validate inputs
     
-            $dsn = 'mysql:host=localhost;dbname=bobscontact';
-            $username = 'root';
-            $password = 'Pa$$w0rd';
+//            $dsn = 'mysql:host=localhost;dbname=bobscontact';
+//            $username = 'root';
+//            $password = 'Pa$$w0rd';
 
             try {
-                $db = new PDO($dsn, $username, $password);
-
+                //$db = new PDO($dsn, $username, $password);
+                $db = Database::getDB();
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
                 /* include('database_error.php'); */
@@ -37,18 +39,22 @@ if (!isset($employee_id)) {
             }
 
             // Add the product to the database  
-            $query = 'SELECT employeeID, firstName FROM employee ORDER by employeeID';
-            $statement = $db->prepare($query);
-            $statement->execute();
-            $employees = $statement;
-            /* echo "Fields: " . $visitor_name . $visitor_email . $visitor_msg; */
+//            $query = 'SELECT employeeID, firstName FROM employee ORDER by employeeID';
+//            $statement = $db->prepare($query);
+//            $statement->execute();
+//            $employees = $statement;
+//            /* echo "Fields: " . $visitor_name . $visitor_email . $visitor_msg; */
+            $employeeDB = new EmployeeDB();
+            $employees = $employeeDB->getEmployee($employee_id);
 
-            $query2 = 'SELECT * FROM `customer` WHERE employeeID = :employeeID ' . 'ORDER by customerEmail';
-           
-            $statement2 = $db->prepare($query2);
-            $statement2->bindValue(":employeeID", $employee_id);
-            $statement2->execute();
-            $customers = $statement2;
+//            $query2 = 'SELECT * FROM `customer` WHERE employeeID = :employeeID ' . 'ORDER by customerEmail';
+//           
+//            $statement2 = $db->prepare($query2);
+//            $statement2->bindValue(":employeeID", $employee_id);
+//            $statement2->execute();
+//            $customers = $statement2;
+            $customerDB = new CustomerDB();
+            $customers = $customerDB->getCustomer($employee_id);
             
             
 
@@ -118,7 +124,8 @@ Modification log:added social media icons, made a new contact form with bootstra
                     <li><a href="index.html">Home</a></li>
                     <li><a href="tours.html">Tours</a></li>
                     <li><a href="about.html">About Bob</a></li>
-                    <li><a href="contact.html">Contact</a></li>                 
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.php">Admin</a></li>
                 </ul>
             </nav>
             <nav class="main-menu" id="animateMenu">  
@@ -127,6 +134,7 @@ Modification log:added social media icons, made a new contact form with bootstra
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="about.html">About Bob</a></li>
                     <li><a href="tours.html">Tours</a></li>
+                    <li><a href="login.php">Admin</a></li>
                 </ul>
             </nav>  
         </div>

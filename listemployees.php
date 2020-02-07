@@ -2,60 +2,99 @@
 <!--
 
 Original Author:Derek Dombek
-Date Created:01-24-20
-Version:initial database
-Date Last Modified:01-24-20
+Date Created:01-31-20
+Version:initial admin page
+Date Last Modified:01-31-20
 Modified by:Derek Dombek
-Modification log:connected database to bobs contact form
+Modification log:made it to where an employee can select and delete a customer
  
 -->
 <?php
-    require('./model/database.php');
-    $customer_name = filter_input(INPUT_POST, 'name');
-    $customer_email = filter_input(INPUT_POST, 'email');
+class Database {
+    private static $dsn = 'mysql:host=localhost;dbname=bobscontact';
+    private static $username = 'root';
+    private static $password = 'Pa$$w0rd';
+    private static $db;
 
-    $customer_packages = filter_input(INPUT_POST, 'services');
+    private function __construct() {}
 
-    $customer_msg = filter_input(INPUT_POST, 'message');
-    // Validate inputs
-    if ($customer_name == null || $customer_email == null ||
-        $customer_msg == null) {
-        $error = "Invalid input data. Check all fields and try again.";
-        /* include('error.php'); */
-        echo "Form Data Error: " . $error; 
-        exit();
-        } else {
-//            $dsn = 'mysql:host=localhost;dbname=bobscontact';
-//            $username = 'root';
-//            $password = 'Pa$$w0rd';
-
+    public static function getDB () {
+        if (!isset(self::$db)) {
             try {
-                //$db = new PDO($dsn, $username, $password);
-                $db = Database::getDB();
-                
+                self::$db = new PDO(self::$dsn,
+                                     self::$username,
+                                     self::$password);
             } catch (PDOException $e) {
                 $error_message = $e->getMessage();
-                /* include('database_error.php'); */
-                echo "DB Error: " . $error_message; 
+                //include('../errors/database_error.php');
+                echo '</br>' .  $error_message;
                 exit();
             }
+        }
+        return self::$db;
+    }
+}
 
-            // Add the product to the database  
-            $query = 'INSERT INTO customer
-                         (customerName, customerEmail, customerDropDown, customerMsg, employeeID)
-                      VALUES
-                         (:customer_name, :customer_email, :customer_packages, :customer_msg, 1)';
-            $statement = $db->prepare($query);
-            $statement->bindValue(':customer_name', $customer_name);
-            $statement->bindValue(':customer_email', $customer_email);
-            $statement->bindValue(':customer_packages', $customer_packages);
-            $statement->bindValue(':customer_msg', $customer_msg);
-            $statement->execute();
-            $statement->closeCursor();
-            /* echo "Fields: " . $visitor_name . $visitor_email . $visitor_msg; */
+
+class Employee {
+    private $id;
+    private $first_name;
+    private $last_name;
+
+    public function __construct($id, $first_name, $last_name) {
+        $this->id = $id;
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
+    }
+
+    public function getID() {
+        return $this->id;
+    }
+
+    public function setID($value) {
+        $this->id = $value;
+    }
+
+    public function getFirstName() {
+        return $this->first_name;
+    }
+
+    public function setFirstName($value) {
+        $this->first_name = $value;
+    }
+    
+    public function getLastName() {
+        return $this->last_name;
+    }
+
+    public function setLastName($value) {
+        $this->last_name = $value;
+    }
+}
+
+
+class EmployeeDB {
+    public static function getEmployees() {
+        $db = Database::getDB();
+        $query = 'SELECT * FROM employee
+                  ORDER BY lastName';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        
+        $employees = array();
+        foreach ($statement as $row) {
+            $employee = new Employee($row['employeeID'],
+                                     $row['firstName'],
+                                     $row['lastName']);
+            $employees[] = $employee;
+        }
+        return $employees;
+    }
+
 
 }
 
+$employees = EmployeeDB::getEmployees();
 ?>
 
 <!DOCTYPE html>
@@ -99,7 +138,7 @@ Modification log:added social media icons, made a new contact form with bootstra
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="js/formsubmit.js"></script>
+
 
 </head>
 
@@ -122,8 +161,7 @@ Modification log:added social media icons, made a new contact form with bootstra
                     <li><a href="index.html">Home</a></li>
                     <li><a href="tours.html">Tours</a></li>
                     <li><a href="about.html">About Bob</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login.php">Admin</a></li>
+                    <li><a href="contact.html">Contact</a></li>                 
                 </ul>
             </nav>
             <nav class="main-menu" id="animateMenu">  
@@ -132,19 +170,26 @@ Modification log:added social media icons, made a new contact form with bootstra
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="about.html">About Bob</a></li>
                     <li><a href="tours.html">Tours</a></li>
-                    <li><a href="login.php">Admin</a></li>
                 </ul>
             </nav>  
         </div>
     </header>
+    
 
     <article>
-            <header>
-                    <h2>Thank you, <?php echo $customer_name; ?>, for contacting us!</h2>
-            </header>
+        <ul>
+             <?php foreach ($employees as $employee) : ?>
+                <li>
+                    <?php echo $employee->getFirstName() . ', ' . $employee->getLastName(); ?>
+                </a>
+            </li>
+            </ul>
+            <?php endforeach; ?>
         </article>
 
-       
+    <article>
+        
+    </article>
 
 
 

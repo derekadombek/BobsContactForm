@@ -2,72 +2,12 @@
 <!--
 
 Original Author:Derek Dombek
-Date Created:01-24-20
-Version:initial database
-Date Last Modified:01-24-20
+Date Created:02-07-20
+Version:initial login page for admin
+Date Last Modified:02-07-20
 Modified by:Derek Dombek
-Modification log:connected database to bobs contact form
- 
--->
-<?php
-    require('./model/database.php');
-    $customer_name = filter_input(INPUT_POST, 'name');
-    $customer_email = filter_input(INPUT_POST, 'email');
-
-    $customer_packages = filter_input(INPUT_POST, 'services');
-
-    $customer_msg = filter_input(INPUT_POST, 'message');
-    // Validate inputs
-    if ($customer_name == null || $customer_email == null ||
-        $customer_msg == null) {
-        $error = "Invalid input data. Check all fields and try again.";
-        /* include('error.php'); */
-        echo "Form Data Error: " . $error; 
-        exit();
-        } else {
-//            $dsn = 'mysql:host=localhost;dbname=bobscontact';
-//            $username = 'root';
-//            $password = 'Pa$$w0rd';
-
-            try {
-                //$db = new PDO($dsn, $username, $password);
-                $db = Database::getDB();
-                
-            } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                /* include('database_error.php'); */
-                echo "DB Error: " . $error_message; 
-                exit();
-            }
-
-            // Add the product to the database  
-            $query = 'INSERT INTO customer
-                         (customerName, customerEmail, customerDropDown, customerMsg, employeeID)
-                      VALUES
-                         (:customer_name, :customer_email, :customer_packages, :customer_msg, 1)';
-            $statement = $db->prepare($query);
-            $statement->bindValue(':customer_name', $customer_name);
-            $statement->bindValue(':customer_email', $customer_email);
-            $statement->bindValue(':customer_packages', $customer_packages);
-            $statement->bindValue(':customer_msg', $customer_msg);
-            $statement->execute();
-            $statement->closeCursor();
-            /* echo "Fields: " . $visitor_name . $visitor_email . $visitor_msg; */
-
-}
-
-?>
-
-<!DOCTYPE html>
-<!--
-
-Original Author:Derek Dombek
-Date Created:08-22-19
-Version:contact layout
-Date Last Modified:09-06-19
-Modified by:Derek Dombek
-Modification log:added social media icons, made a new contact form with bootstrap.
- 
+Modification log: -02-07-20-initial login for admin
+                  
 -->
 <html lang="en-US">
 <head>
@@ -76,7 +16,7 @@ Modification log:added social media icons, made a new contact form with bootstra
 <meta name="keywords" content="Fishing Guide, Fishing Tours, Marlin, Snook, Hog Fish, Mahi Mahi, Jack, Tarpon, King Fish, Stuart, Jensen Beach, South Florida">
 <meta name="author" content="Derek Dombek">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact</title>
+<title>Admin</title>
 <!--===============================================================================================-->
 
 <!--===============================================================================================-->
@@ -99,7 +39,7 @@ Modification log:added social media icons, made a new contact form with bootstra
 
 	<link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="js/formsubmit.js"></script>
+<!--<script src="js/formsubmit.js"></script>-->
 
 </head>
 
@@ -138,15 +78,31 @@ Modification log:added social media icons, made a new contact form with bootstra
         </div>
     </header>
 
-    <article>
-            <header>
-                    <h2>Thank you, <?php echo $customer_name; ?>, for contacting us!</h2>
-            </header>
-        </article>
+        <!-- new form made with bootstrap-->
+    <section id="form">
+        
+        <form class="contact100-form validate-form" method="post" action="admin.php">
+            <div class="form-column">           
+                <div class="col-md-5 mb-3">
+                    <div class="wrap-input100 validate-input" data-validate="Name is required">
+                        <input id="name" class="input100" type="text" name="username" placeholder="Enter your username" required>
+                    </div>
+                </div>
+                
+                    <div class="col-md-5 mb-3">                         
+                        <div class="input-group">
+                            <div class="wrap-input100 validate-input" >
+                                <input id="mail" class="input100" type="password" name="password" placeholder="Enter your password" required>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            
+                <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
 
-       
-
-
+    </section>    
+    <div id="dropDownSelect1"></div>
 
     <footer>
         <p>
