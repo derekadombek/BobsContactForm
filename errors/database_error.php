@@ -4,67 +4,12 @@
 Original Author:Derek Dombek
 Date Created:01-24-20
 Version:initial database
-Date Last Modified:02-10-20
+Date Last Modified:01-24-20
 Modified by:Derek Dombek
 Modification log:connected database to bobs contact form
-                -02-10-20: added catch for when database has issues
  
 -->
-<?php
-    require('./model/database.php');
-    $customer_name = filter_input(INPUT_POST, 'name');
-    $customer_email = filter_input(INPUT_POST, 'email');
 
-    $customer_packages = filter_input(INPUT_POST, 'services');
-
-    $customer_msg = filter_input(INPUT_POST, 'message');
-    $error_message = null;
-    // Validate inputs
-    if ($customer_name == null || $customer_email == null ||
-        $customer_msg == null) {
-        $error = "Invalid input data. Check all fields and try again.";
-        /* include('error.php'); */
-        echo "Form Data Error: " . $error; 
-        exit();
-        } else {
-//            $dsn = 'mysql:host=localhost;dbname=bobscontact';
-//            $username = 'root';
-//            $password = 'Pa$$w0rd';
-
-            try {
-                //$db = new PDO($dsn, $username, $password);
-                $db = Database::getDB();
-                
-            } catch (PDOException $e) {
-                //$error_message = $e->getMessage();
-                $error_message = "We're experiencing technical difficulties, please try again later.";
-                include('./database_error.php');
-                //echo "DB Error: " . $error_message; 
-                exit();
-            }
-            if (!$error_message) {
-                // Add the product to the database  
-            $query = 'INSERT INTO customer
-                         (customerName, customerEmail, customerDropDown, customerMsg, employeeID)
-                      VALUES
-                         (:customer_name, :customer_email, :customer_packages, :customer_msg, 1)';
-            $statement = $db->prepare($query);
-            $statement->bindValue(':customer_name', $customer_name);
-            $statement->bindValue(':customer_email', $customer_email);
-            $statement->bindValue(':customer_packages', $customer_packages);
-            $statement->bindValue(':customer_msg', $customer_msg);
-            $count = $statement->execute();
-            $statement->closeCursor();
-            /* echo "Fields: " . $visitor_name . $visitor_email . $visitor_msg; */
-            if ($count < 1) {
-                    $error_message = "We're experiencing technical difficulties, please try again later.";
-        } else {
-            $error_message = "Thank you, $customer_name, for contacting us!";
-        }
-    }        
-}
-
-?>
 
 <!DOCTYPE html>
 <!--

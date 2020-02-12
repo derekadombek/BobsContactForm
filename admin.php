@@ -27,16 +27,26 @@ if (!isset($employee_id)) {
 //            $dsn = 'mysql:host=localhost;dbname=bobscontact';
 //            $username = 'root';
 //            $password = 'Pa$$w0rd';
-
-            try {
+                try {
                 //$db = new PDO($dsn, $username, $password);
                 $db = Database::getDB();
+                
             } catch (PDOException $e) {
-                $error_message = $e->getMessage();
-                /* include('database_error.php'); */
-                echo "DB Error: " . $error_message; 
+                //$error_message = $e->getMessage();
+                $error_message = "We're experiencing technical difficulties, please try again later.";
+                include('./errors/database_error.php');
+                //echo "DB Error: " . $error_message; 
                 exit();
             }
+//            try {
+//                //$db = new PDO($dsn, $username, $password);
+//                $db = Database::getDB();
+//            } catch (PDOException $e) {
+//                $error_message = $e->getMessage();
+//                /* include('database_error.php'); */
+//                echo "DB Error: " . $error_message; 
+//                exit();
+//            }
 
             // Add the product to the database  
 //            $query = 'SELECT employeeID, firstName FROM employee ORDER by employeeID';
